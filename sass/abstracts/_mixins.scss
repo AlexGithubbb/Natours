@@ -1,0 +1,51 @@
+@mixin clearfix{
+  &::after{
+  content: "";
+  display: table;
+  clear: both;
+  }
+}
+
+@mixin photohover {
+  &:hover{
+    transform: scale(1.05) translateY(-.5rem);
+    box-shadow: 0 2.5rem 4rem rgba($color-black, 0.4);
+    z-index: 1;
+    outline: 1rem solid $color-primary;
+    }
+}
+
+@mixin absCenter {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+// @mixin respond-phone {
+//   @media (max-width: 600px) { @content };
+// }
+
+
+/* DEVICES
+-phone 
+-tab-port 
+-tab-land 
+-big-desktop 
+1em = 16px;
+*/
+
+@mixin respond ($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and(max-width: 37.5em) { @content }; // 600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and(max-width: 56.25em) { @content }; //900px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and(max-width: 75em) { @content }; //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and(min-width: 112.5em) { @content }; //1800px
+  }
+}
